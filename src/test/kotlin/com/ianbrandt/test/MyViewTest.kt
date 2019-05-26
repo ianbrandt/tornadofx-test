@@ -1,13 +1,11 @@
 package com.ianbrandt.test
 
 import javafx.scene.Scene
-import javafx.scene.control.Button
 import javafx.stage.Stage
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.testfx.api.FxRobot
-import org.testfx.assertions.api.Assertions
-import org.testfx.assertions.api.Assertions.*
+import org.testfx.assertions.api.Assertions.assertThat
 import org.testfx.framework.junit5.ApplicationExtension
 import org.testfx.framework.junit5.Start
 
