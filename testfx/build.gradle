@@ -1,0 +1,4 @@
+dependencies {
+	testImplementation("io.mockk:mockk:1.9.3")
+	testImplementation("org.testfx:testfx-junit5:4.0.16-alpha")
+}
