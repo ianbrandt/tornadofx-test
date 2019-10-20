@@ -1,8 +1,8 @@
-package com.ianbrandt.test
+package com.ianbrandt.tornadofx.testfx
 
 import tornadofx.*
 
-class MyView : View() {
+class TestFxView : View() {
 	companion object {
 		const val BUTTON_ID = "test-button"
 		const val INITIAL_BUTTON_TEXT = "Test"

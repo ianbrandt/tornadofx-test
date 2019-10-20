@@ -1,3 +1,3 @@
 rootProject.name = "tornadofx-test"
 
-include("testfx")
+include("koin", "testfx")

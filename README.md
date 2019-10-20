@@ -1,2 +1,2 @@
 # tornadofx-test
-A basic TornadoFX test
+TornadoFX experiments.

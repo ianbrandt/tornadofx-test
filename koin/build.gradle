@@ -1,0 +1,3 @@
+dependencies {
+	implementation("org.koin:koin-core:2.0.1")
+}

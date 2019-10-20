@@ -1,4 +1,4 @@
-package com.ianbrandt.test
+package com.ianbrandt.tornadofx.testfx
 
 import javafx.scene.Scene
 import javafx.stage.Stage
@@ -10,20 +10,20 @@ import org.testfx.framework.junit5.ApplicationExtension
 import org.testfx.framework.junit5.Start
 
 @ExtendWith(ApplicationExtension::class)
-class MyViewTest {
+class TestFxViewTest {
 
 	@Start
 	fun start(stage: Stage) {
-		stage.scene = Scene(MyView().root)
+		stage.scene = Scene(TestFxView().root)
 		stage.show()
 	}
 
 	@Test
 	fun `test button text changes`(robot: FxRobot) {
-		val buttonQuery = "#${MyView.BUTTON_ID}"
+		val buttonQuery = "#${TestFxView.BUTTON_ID}"
 		val button = robot.lookup(buttonQuery).queryButton()
-		assertThat(button).hasText(MyView.INITIAL_BUTTON_TEXT)
+		assertThat(button).hasText(TestFxView.INITIAL_BUTTON_TEXT)
 		robot.clickOn(button)
-		assertThat(button).hasText(MyView.CHANGED_BUTTON_TEXT)
+		assertThat(button).hasText(TestFxView.CHANGED_BUTTON_TEXT)
 	}
 }
