@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	kotlin("jvm") version "1.3.50"
-	id("com.github.ben-manes.versions") version "0.25.0"
+	id("com.github.ben-manes.versions") version "0.27.0"
 }
 
 repositories {
@@ -15,7 +15,6 @@ repositories {
 dependencies {
 	val junitVersion = "5.5.2"
 
-	implementation(kotlin("stdlib"))
 	implementation(kotlin("stdlib-jdk8"))
 	implementation(kotlin("reflect"))
 	implementation("no.tornado:tornadofx:1.7.19")
@@ -46,7 +45,7 @@ tasks {
 	}
 
 	named<Wrapper>("wrapper") {
-		gradleVersion = "5.6.2"
+		gradleVersion = "5.6.3"
 		distributionType = Wrapper.DistributionType.ALL
 	}
 }
