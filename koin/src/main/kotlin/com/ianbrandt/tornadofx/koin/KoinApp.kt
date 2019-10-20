@@ -1,9 +1,11 @@
 package com.ianbrandt.tornadofx.koin
 
+import org.koin.core.KoinComponent
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.dsl.module
 import tornadofx.*
+import kotlin.reflect.KClass
 
 fun main() {
 	launch<KoinApp>()
@@ -12,15 +14,16 @@ fun main() {
 class KoinApp : App(KoinView::class) {
 	override fun init() {
 		startKoin {
-			modules(module {})
+			modules(module {
+				single<GreetingService> { HelloKoinGreetingService() }
+			})
 		}
 
-		// Does not compile: "Cannot use 'T' as reified type parameter..."
-//		FX.dicontainer = object : DIContainer, KoinComponent {
-//			override fun <T : Any> getInstance(type: KClass<T>): T {
-//				return get(TypeQualifier(type))
-//			}
-//		}
+		FX.dicontainer = object : DIContainer, KoinComponent {
+			override fun <T : Any> getInstance(type: KClass<T>): T {
+				return getKoin().get(clazz = type, qualifier = null, parameters = null)
+			}
+		}
 	}
 
 	override fun stop() {
@@ -30,7 +33,18 @@ class KoinApp : App(KoinView::class) {
 }
 
 class KoinView : View() {
+	private val greetingService: GreetingService by di()
 	override val root = vbox {
-		label("Hello, Koin!")
+		button(greetingService.getGreeting())
+	}
+}
+
+interface GreetingService {
+	fun getGreeting(): String
+}
+
+class HelloKoinGreetingService : GreetingService {
+	override fun getGreeting(): String {
+		return "Hello, Koin!"
 	}
 }
