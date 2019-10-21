@@ -12,11 +12,15 @@ fun main() {
 }
 
 class KoinApp : App(KoinView::class) {
+
 	override fun init() {
+
+		val koinModule = module {
+			single<GreetingService> { HelloKoinGreetingService() }
+		}
+
 		startKoin {
-			modules(module {
-				single<GreetingService> { HelloKoinGreetingService() }
-			})
+			modules(koinModule)
 		}
 
 		FX.dicontainer = object : DIContainer, KoinComponent {
@@ -33,7 +37,9 @@ class KoinApp : App(KoinView::class) {
 }
 
 class KoinView : View() {
+
 	private val greetingService: GreetingService by di()
+
 	override val root = vbox {
 		button(greetingService.getGreeting())
 	}
